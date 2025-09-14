@@ -14,4 +14,5 @@ object Tranquility : ModInitializer {
         ModBlocks.registerModBlocks()
 		logger.info("Hello Fabric world!")
 	}
+    // test comment
 }
