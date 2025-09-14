@@ -1,0 +1,50 @@
+{
+	"schemaVersion": 1,
+	"id": "fasom",
+	"version": "${version}",
+	"name": "Fasom",
+	"description": "Experimental mod for fun",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/benhorv/fasom"
+	},
+	"license": "MIT",
+	"icon": "assets/fasom/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "hu.benhorv.fasom.Fasom",
+				"adapter": "kotlin"
+			}
+		],
+		"fabric-datagen": [
+			{
+				"value": "hu.benhorv.fasom.FasomDataGenerator",
+				"adapter": "kotlin"
+			}
+		],
+        "client": [
+          {
+            "value": "hu.benhorv.fasom.FasomClient",
+            "adapter": "kotlin"
+          }
+        ]
+	},
+	"mixins": [
+		"fasom.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.8",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
