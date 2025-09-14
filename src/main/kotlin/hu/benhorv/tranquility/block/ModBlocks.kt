@@ -18,6 +18,16 @@ import net.minecraft.util.Identifier
 
 object ModBlocks {
 
+    // Tranquility mod
+
+    val MASONIC_COBBLESTONE: Block = registerBlock("masonic_cobblestone", AbstractBlock.Settings.create()
+        .strength(4f)
+        .requiresTool()
+        .sounds(BlockSoundGroup.STONE)
+    )
+
+    // Fasom mod
+
     val ALUMINIUM_BLOCK: Block = registerBlock("aluminium_block", AbstractBlock.Settings.create()
         .strength(4f)
         .requiresTool()
