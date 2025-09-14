@@ -26,6 +26,13 @@ object ModBlocks {
         .sounds(BlockSoundGroup.STONE)
     )
 
+    val CRIMSON_OBSIDIAN: Block = registerBlock("crimson_obsidian", AbstractBlock.Settings.create()
+        .strength(50f)
+        .resistance(1200f)
+        .requiresTool()
+        .sounds(BlockSoundGroup.STONE)
+    )
+
     // Fasom mod
 
     val ALUMINIUM_BLOCK: Block = registerBlock("aluminium_block", AbstractBlock.Settings.create()

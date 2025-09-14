@@ -58,3 +58,29 @@
         .sounds(BlockSoundGroup.IRON)
     )
 ```
+
+### `data/tranquility/loot_table/blocks`
+
+```json
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tranquility:masonic_cobblestone"
+        }
+      ],
+      "rolls": 1.0
+    }
+
+  ]
+}
+```
