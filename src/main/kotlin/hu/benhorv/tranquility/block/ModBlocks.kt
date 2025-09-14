@@ -18,7 +18,7 @@ import net.minecraft.util.Identifier
 
 object ModBlocks {
 
-    //tranquility mod cuccok
+    // Tranquility mod
 
     val MASONIC_COBBLESTONE: Block = registerBlock("masonic_cobblestone", AbstractBlock.Settings.create()
         .strength(4f)
@@ -26,7 +26,7 @@ object ModBlocks {
         .sounds(BlockSoundGroup.STONE)
     )
 
-    //Kobanyai mod cuccok
+    // Fasom mod
 
     val ALUMINIUM_BLOCK: Block = registerBlock("aluminium_block", AbstractBlock.Settings.create()
         .strength(4f)
