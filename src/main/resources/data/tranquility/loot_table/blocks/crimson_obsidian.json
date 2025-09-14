@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion",
+          "condition": "minecraft:match_tool"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tranquility:crimson_obsidian"
+        }
+      ],
+      "rolls": 1.0
+    }
+
+  ]
+}
