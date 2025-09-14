@@ -14,13 +14,12 @@ import net.minecraft.util.Identifier
 object ModItemGroups {
     val TRANQUILITY_ITEMS_GROUP : ItemGroup = Registry.register(Registries.ITEM_GROUP,
         Identifier.of(Tranquility.MOD_ID, "tranquility_items"),
-        FabricItemGroup.builder().icon( { ItemStack(ModItems.RAW_ALUMINIUM) } )
+        FabricItemGroup.builder().icon( { ItemStack(ModBlocks.CRIMSON_OBSIDIAN) } )
             .displayName(Text.translatable("itemgroup.tranquility.tranquility_items"))
             .entries {
                 displayContext, entries ->
-                entries.add(ModBlocks.ALUMINIUM_BLOCK)
-                entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
-                entries.add(ModBlocks.ALUMINIUM_ORE)
+                entries.add(ModBlocks.MASONIC_COBBLESTONE)
+                entries.add(ModBlocks.CRIMSON_OBSIDIAN)
             }.build())
 
     fun registerItemGroups() {
