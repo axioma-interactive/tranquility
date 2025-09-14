@@ -1,41 +1,41 @@
 {
 	"schemaVersion": 1,
-	"id": "fasom",
+	"id": "tranquility",
 	"version": "${version}",
-	"name": "Fasom",
+	"name": "Tranquility",
 	"description": "Experimental mod for fun",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/benhorv/fasom"
+		"sources": "https://github.com/benhorv/tranquility"
 	},
 	"license": "MIT",
-	"icon": "assets/fasom/icon.png",
+	"icon": "assets/tranquility/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			{
-				"value": "hu.benhorv.fasom.Fasom",
+				"value": "hu.benhorv.tranquility.Tranquility",
 				"adapter": "kotlin"
 			}
 		],
 		"fabric-datagen": [
 			{
-				"value": "hu.benhorv.fasom.FasomDataGenerator",
+				"value": "hu.benhorv.tranquility.TranquilityDataGenerator",
 				"adapter": "kotlin"
 			}
 		],
         "client": [
           {
-            "value": "hu.benhorv.fasom.FasomClient",
+            "value": "hu.benhorv.tranquility.TranquilityClient",
             "adapter": "kotlin"
           }
         ]
 	},
 	"mixins": [
-		"fasom.mixins.json"
+		"tranquility.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
