@@ -1,6 +1,7 @@
 package hu.benhorv.tranquility
 
 import hu.benhorv.tranquility.block.ModBlocks
+import hu.benhorv.tranquility.item.ModItemGroups
 import hu.benhorv.tranquility.item.ModItems
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
@@ -12,7 +13,7 @@ object Tranquility : ModInitializer {
 	override fun onInitialize() {
         ModItems.registerModItems()
         ModBlocks.registerModBlocks()
+        ModItemGroups.registerItemGroups()
 		logger.info("Hello Fabric world!")
 	}
-    // test comment
 }
