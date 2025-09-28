@@ -20,6 +20,9 @@ object ModItemGroups {
                 displayContext, entries ->
                 entries.add(ModBlocks.MASONIC_COBBLESTONE)
                 entries.add(ModBlocks.CRIMSON_OBSIDIAN)
+                entries.add(ModBlocks.ALUMINIUM_BLOCK)
+                entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
+                entries.add(ModBlocks.ALUMINIUM_ORE)
             }.build())
 
     fun registerItemGroups() {
