@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "tranquility:small_derelict_menger_vault",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1646207470,
+    "spacing": 20,
+    "separation": 5,
+    "type": "minecraft:random_spread"
+  }
+}

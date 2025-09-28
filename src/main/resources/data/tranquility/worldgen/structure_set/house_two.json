@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "tranquility:house_two",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1646666670,
+    "spacing": 20,
+    "separation": 5,
+    "type": "minecraft:random_spread"
+  }
+}
