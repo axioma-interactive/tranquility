@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "tranquility:crimson_obsidian",
-    "tranquility:masonic_cobblestone",
     "tranquility:aluminium_block",
     "tranquility:raw_aluminium_block",
     "tranquility:aluminium_ore",

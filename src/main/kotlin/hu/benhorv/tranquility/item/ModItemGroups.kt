@@ -21,6 +21,7 @@ object ModItemGroups {
                 entries.add(ModBlocks.MASONIC_COBBLESTONE)
                 entries.add(ModBlocks.CRIMSON_OBSIDIAN)
                 entries.add(ModBlocks.ALUMINIUM_ORE)
+                entries.add(ModBlocks.DEEPSLATE_ALUMINIUM_ORE)
                 entries.add(ModItems.RAW_ALUMINIUM)
                 entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
                 entries.add(ModItems.ALUMINIUM_INGOT)

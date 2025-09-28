@@ -5,5 +5,9 @@
   "item.tranquility.aluminium_ingot": "Alumíniumrúd",
   "item.tranquility.aluminium_block": "Alumíniumblokk",
   "item.tranquility.raw_aluminium_block": "Nyersalumínium-blokk",
-  "item.tranquility.aluminium_ore": "Aluminiumérc"
+  "item.tranquility.aluminium_ore": "Alumíniumérc",
+  "item.tranquility.deepslate_aluminium_ore": "Alumíniumérc mélypalában",
+  "item.tranquility.masonic_cobblestone": "Kőműves Zúzottkő",
+  "item.tranquility.crimson_obsidian": "Bíbor Obszidián",
+  "itemgroup.tranquility.tranquility_items": "Tranquility Tárgyak"
 }
