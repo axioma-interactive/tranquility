@@ -21,7 +21,7 @@ object ModBlocks {
     // Tranquility mod
 
     val MASONIC_COBBLESTONE: Block = registerBlock("masonic_cobblestone", AbstractBlock.Settings.create()
-        .strength(4f)
+        .strength(2f, 6f)
         .requiresTool()
         .sounds(BlockSoundGroup.STONE)
     )
@@ -33,24 +33,28 @@ object ModBlocks {
         .sounds(BlockSoundGroup.STONE)
     )
 
-    // Fasom mod
-
     val ALUMINIUM_BLOCK: Block = registerBlock("aluminium_block", AbstractBlock.Settings.create()
-        .strength(4f)
+        .strength(4.5f, 6f)
         .requiresTool()
         .sounds(BlockSoundGroup.IRON)
     )
 
     val RAW_ALUMINIUM_BLOCK: Block = registerBlock("raw_aluminium_block", AbstractBlock.Settings.create()
-        .strength(3f)
+        .strength(4.5f, 6f)
         .requiresTool()
         .sounds(BlockSoundGroup.STONE)
     )
 
     val ALUMINIUM_ORE: Block = registerBlock("aluminium_ore", AbstractBlock.Settings.create()
-        .strength(3f)
+        .strength(3f, 3f)
         .requiresTool()
         .sounds(BlockSoundGroup.STONE)
+    )
+
+    val DEEPSLATE_ALUMINIUM_ORE: Block = registerBlock("deepslate_aluminium_ore", AbstractBlock.Settings.create()
+        .strength(4.5f, 3f)
+        .requiresTool()
+        .sounds(BlockSoundGroup.DEEPSLATE)
     )
 
     private fun registerBlock(name: String, blockSettings: AbstractBlock.Settings) : Block {
@@ -73,6 +77,7 @@ object ModBlocks {
             entries.add(ModBlocks.ALUMINIUM_BLOCK)
             entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
             entries.add(ModBlocks.ALUMINIUM_ORE)
+            entries.add(ModBlocks.DEEPSLATE_ALUMINIUM_ORE)
         }
     }
 }
