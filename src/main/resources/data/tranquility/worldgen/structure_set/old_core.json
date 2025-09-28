@@ -1,14 +1,13 @@
 {
-  "structures": [
-    {
-      "structure": "tranquility:old_core",
-      "weight": 1
-    }
-  ],
   "placement": {
-    "salt": 1641106670,
-    "spacing": 20,
-    "separation": 19,
-    "type": "minecraft:random_spread"
-  }
+    "type": "minecraft:random_spread",
+    "salt": 98745623,
+    "separation": 12,
+    "spacing": 40,
+    "spread_type": "triangular"
+  },
+  "structures": [{
+    "structure": "tranquility:old_core",
+    "weight": 1
+  }]
 }
