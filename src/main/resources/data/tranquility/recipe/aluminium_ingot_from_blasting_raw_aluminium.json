@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.2,
+  "group": "aluminium_ingot",
+  "ingredient": [
+    "tranquility:raw_aluminium"
+  ],
+  "result": {
+    "id": "tranquility:aluminium_ingot"
+  }
+
+}

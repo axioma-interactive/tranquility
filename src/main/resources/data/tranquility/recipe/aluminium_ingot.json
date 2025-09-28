@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+      "tranquility:aluminium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "tranquility:aluminium_ingot"
+  }
+}
