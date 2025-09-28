@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "tranquility:old_core",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1641106670,
+    "spacing": 20,
+    "separation": 19,
+    "type": "minecraft:random_spread"
+  }
+}

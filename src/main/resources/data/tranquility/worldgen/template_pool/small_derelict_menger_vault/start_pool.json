@@ -1,0 +1,15 @@
+{
+  "name": "tranquility:small_derelict_menger_vault/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "tranquility:small_derelict_menger_vault",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

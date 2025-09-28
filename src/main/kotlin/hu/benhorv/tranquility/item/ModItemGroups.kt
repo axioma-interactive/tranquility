@@ -19,6 +19,7 @@ object ModItemGroups {
             .entries {
                 displayContext, entries ->
                 entries.add(ModBlocks.MASONIC_COBBLESTONE)
+                entries.add(ModBlocks.MOSSY_MASONIC_COBBLESTONE)
                 entries.add(ModBlocks.CRIMSON_OBSIDIAN)
                 entries.add(ModBlocks.ALUMINIUM_ORE)
                 entries.add(ModBlocks.DEEPSLATE_ALUMINIUM_ORE)
