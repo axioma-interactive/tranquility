@@ -1,9 +1,9 @@
 {
   "type": "minecraft:jigsaw",
-  "start_pool": "tranquility:old_core/start_pool",
-  "size": 2,
+  "start_pool": "tranquility:ancient_cube_anchor/start_pool",
+  "size": 6,
   "max_distance_from_center": 80,
-  "biomes": "#tranquility:has_structure/old_core",
+  "biomes": "#tranquility:has_structure/ancient_cube_anchor",
   "step": "underground_structures",
   "start_height": {
     "absolute": 1
