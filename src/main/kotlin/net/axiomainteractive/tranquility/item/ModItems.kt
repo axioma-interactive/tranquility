@@ -1,7 +1,7 @@
-package hu.benhorv.tranquility.item
+package net.axiomainteractive.tranquility.item
 
-import hu.benhorv.tranquility.Tranquility
-import hu.benhorv.tranquility.Tranquility.logger
+import net.axiomainteractive.tranquility.Tranquility
+import net.axiomainteractive.tranquility.Tranquility.logger
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroups

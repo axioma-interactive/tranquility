@@ -1,8 +1,8 @@
-package hu.benhorv.tranquility
+package net.axiomainteractive.tranquility
 
-import hu.benhorv.tranquility.block.ModBlocks
-import hu.benhorv.tranquility.item.ModItemGroups
-import hu.benhorv.tranquility.item.ModItems
+import net.axiomainteractive.tranquility.block.ModBlocks
+import net.axiomainteractive.tranquility.item.ModItemGroups
+import net.axiomainteractive.tranquility.item.ModItems
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 

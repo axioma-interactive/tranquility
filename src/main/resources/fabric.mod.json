@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/benhorv/tranquility"
+		"sources": "https://github.com/axioma-interactive/tranquility"
 	},
 	"license": "MIT",
 	"icon": "assets/tranquility/icon.png",
@@ -17,19 +17,19 @@
 	"entrypoints": {
 		"main": [
 			{
-				"value": "hu.benhorv.tranquility.Tranquility",
+				"value": "net.axiomainteractive.tranquility.Tranquility",
 				"adapter": "kotlin"
 			}
 		],
 		"fabric-datagen": [
 			{
-				"value": "hu.benhorv.tranquility.TranquilityDataGenerator",
+				"value": "net.axiomainteractive.tranquility.TranquilityDataGenerator",
 				"adapter": "kotlin"
 			}
 		],
         "client": [
           {
-            "value": "hu.benhorv.tranquility.TranquilityClient",
+            "value": "net.axiomainteractive.tranquility.TranquilityClient",
             "adapter": "kotlin"
           }
         ]

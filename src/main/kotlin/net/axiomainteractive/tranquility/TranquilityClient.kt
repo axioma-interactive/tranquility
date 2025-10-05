@@ -1,4 +1,4 @@
-package hu.benhorv.tranquility
+package net.axiomainteractive.tranquility
 
 import net.fabricmc.api.ClientModInitializer
 
