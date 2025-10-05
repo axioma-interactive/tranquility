@@ -2,7 +2,6 @@ package net.axiomainteractive.tranquility.entity
 
 import net.axiomainteractive.tranquility.Tranquility
 import net.axiomainteractive.tranquility.entity.custom.CrimsonSlimeEntity
-import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registries

@@ -19,7 +19,7 @@ object Tranquility : ModInitializer {
         ModItemGroups.registerItemGroups()
         ModEntities.registerModEntities()
 
-        FabricDefaultAttributeRegistry.register(ModEntities.CRIMSON_SLIME, CrimsonSlimeEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.CRIMSON_SLIME, CrimsonSlimeEntity.createAttributes())
 
 		logger.info("Hello Fabric world!")
 	}

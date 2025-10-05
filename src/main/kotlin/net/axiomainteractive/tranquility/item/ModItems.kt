@@ -2,11 +2,9 @@ package net.axiomainteractive.tranquility.item
 
 import net.axiomainteractive.tranquility.Tranquility
 import net.axiomainteractive.tranquility.Tranquility.logger
-import net.axiomainteractive.tranquility.entity.ModEntities
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroups
-import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
