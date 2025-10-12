@@ -4,5 +4,4 @@ import net.minecraft.client.render.entity.state.LivingEntityRenderState
 import net.minecraft.entity.AnimationState
 
 object CrimsonSlimeRenderState: LivingEntityRenderState() {
-    val idleAnimationState: AnimationState = AnimationState()
 }

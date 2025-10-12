@@ -24,29 +24,21 @@ class CrimsonSlimeModel(root: ModelPart) : EntityModel<CrimsonSlimeRenderState>(
             // main_body (Outer Shell)
             val mainBody = modelPartData.addChild(
                 "main_body",
-                ModelPartBuilder.create().uv(0, 0).cuboid(-4.0f, 0.0f, -4.0f, 8.0f, 8.0f, 8.0f, Dilation(0.0f)),
+                ModelPartBuilder.create(),
                 ModelTransform.rotation(0.0f, 0.0f, 0.0f)
             )
 
             // inner_layer (Inner features)
             mainBody.addChild(
                 "inner_layer",
-                ModelPartBuilder.create()
-                    // Feature 1
-                    .uv(24, 16).cuboid(-3.5f, 2.7f, -3.5f, 2.0f, 2.0f, 2.0f, Dilation(0.0f))
-                    // Feature 2
-                    .uv(24, 20).cuboid(-3.5f, 2.7f, 1.5f, 2.0f, 2.0f, 2.0f, Dilation(0.0f))
-                    // Inner Slime Body
-                    .uv(0, 16).cuboid(-3.0f, 0.0f, -3.0f, 6.0f, 6.0f, 6.0f, Dilation(0.0f))
-                    // Small feature
-                    .uv(24, 24).cuboid(-3.5f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, Dilation(0.0f)),
+                ModelPartBuilder.create(),
                 ModelTransform.rotation(0.0f, 0.0f, 0.0f)
             )
 
             // bb_main (Base component)
             modelPartData.addChild(
                 "bb_main",
-                ModelPartBuilder.create().uv(0, 0).cuboid(-1.0f, 0.0f, -1.0f, 2.0f, 2.0f, 2.0f, Dilation(0.0f)),
+                ModelPartBuilder.create(),
                 ModelTransform.rotation(0.0f, 0.0f, 0.0f)
             )
 
