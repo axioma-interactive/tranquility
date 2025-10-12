@@ -32,7 +32,10 @@
             "value": "net.axiomainteractive.tranquility.TranquilityClient",
             "adapter": "kotlin"
           }
-        ]
+        ],
+      "terrablender": [
+        "net.axiomainteractive.tranquility.world.biome.ModTerrablenderAPI"
+      ]
 	},
 	"mixins": [
 		"tranquility.mixins.json"

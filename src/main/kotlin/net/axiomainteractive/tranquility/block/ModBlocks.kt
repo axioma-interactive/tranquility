@@ -26,6 +26,12 @@ object ModBlocks {
         .sounds(BlockSoundGroup.STONE)
     )
 
+    val MASONIC_STONE: Block = registerBlock("masonic_stone", AbstractBlock.Settings.create()
+        .strength(2f, 6f)
+        .requiresTool()
+        .sounds(BlockSoundGroup.STONE)
+    )
+
     val MOSSY_MASONIC_COBBLESTONE: Block = registerBlock("mossy_masonic_cobblestone", AbstractBlock.Settings.create()
         .strength(4f)
         .requiresTool()

@@ -18,6 +18,7 @@ object ModItemGroups {
             .displayName(Text.translatable("itemgroup.tranquility.tranquility_items"))
             .entries {
                 displayContext, entries ->
+                entries.add(ModBlocks.MASONIC_STONE)
                 entries.add(ModBlocks.MASONIC_COBBLESTONE)
                 entries.add(ModBlocks.MOSSY_MASONIC_COBBLESTONE)
                 entries.add(ModBlocks.CRIMSON_OBSIDIAN)
