@@ -5,6 +5,7 @@ import net.axiomainteractive.tranquility.Tranquility.logger
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
+import net.minecraft.block.piston.PistonBehavior
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroups
@@ -17,6 +18,7 @@ import net.minecraft.util.Identifier
 
 
 object ModBlocks {
+
 
     // Tranquility mod
 
@@ -106,11 +108,11 @@ object ModBlocks {
         logger.info("Registering Mod Blocks for " + Tranquility.MOD_ID)
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register { entries ->
-            entries.add(ModBlocks.ALUMINIUM_BLOCK)
-            entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
-            entries.add(ModBlocks.ALUMINIUM_ORE)
-            entries.add(ModBlocks.DEEPSLATE_ALUMINIUM_ORE)
-            entries.add(ModBlocks.COMPACT_MOSSY_MASONIC_COBBLESTONE)
+            entries.add(ALUMINIUM_BLOCK)
+            entries.add(RAW_ALUMINIUM_BLOCK)
+            entries.add(ALUMINIUM_ORE)
+            entries.add(DEEPSLATE_ALUMINIUM_ORE)
+            entries.add(COMPACT_MOSSY_MASONIC_COBBLESTONE)
         }
     }
 }

@@ -2,7 +2,9 @@ package net.axiomainteractive.tranquility.item
 
 import net.axiomainteractive.tranquility.Tranquility
 import net.axiomainteractive.tranquility.Tranquility.logger
+import net.axiomainteractive.tranquility.block.ModBlocks
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
@@ -16,7 +18,15 @@ object ModItems {
     val EMPTY_QUARRY_BEER : Item = registerItem("empty_quarry_beer", Item.Settings())
     val RAW_ALUMINIUM : Item = registerItem("raw_aluminium", Item.Settings())
     val ALUMINIUM_INGOT : Item = registerItem("aluminium_ingot", Item.Settings())
-    val CHARGED_REDSTONE_DUST : Item = registerItem("charged_redstone_dust", Item.Settings().fireproof())
+    val CHARGED_REDSTONE_DUST : Item = let {
+        val id = Identifier.of(Tranquility.MOD_ID, "charged_redstone_dust")
+        val key = RegistryKey.of(RegistryKeys.ITEM, id)
+        val settings = Item.Settings().fireproof().registryKey(key)
+        val item = ChargedRedstoneDustItem(settings)
+        Registry.register(Registries.ITEM, key, item)
+    }
+
+
 
     private fun registerItem(name: String, itemSettings: Item.Settings) : Item {
         val id: Identifier = Identifier.of(Tranquility.MOD_ID, name)

@@ -4,7 +4,11 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin",
-		"ItemEntityMixin"
+		"ItemEntityMixin",
+		"AbstractBlockStateMixin",
+		"RedstoneViewMixin",
+		"RedstoneWireBlockMixin",
+		"CreeperEntityAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1
