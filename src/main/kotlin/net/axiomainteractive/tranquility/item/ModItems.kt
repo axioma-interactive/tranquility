@@ -16,6 +16,7 @@ object ModItems {
     val EMPTY_QUARRY_BEER : Item = registerItem("empty_quarry_beer", Item.Settings())
     val RAW_ALUMINIUM : Item = registerItem("raw_aluminium", Item.Settings())
     val ALUMINIUM_INGOT : Item = registerItem("aluminium_ingot", Item.Settings())
+    val CHARGED_REDSTONE_DUST : Item = registerItem("charged_redstone_dust", Item.Settings().fireproof())
 
     private fun registerItem(name: String, itemSettings: Item.Settings) : Item {
         val id: Identifier = Identifier.of(Tranquility.MOD_ID, name)
@@ -33,6 +34,7 @@ object ModItems {
             entries.add(EMPTY_QUARRY_BEER)
             entries.add(RAW_ALUMINIUM)
             entries.add(ALUMINIUM_INGOT)
+            entries.add(CHARGED_REDSTONE_DUST)
         }
     }
 }
