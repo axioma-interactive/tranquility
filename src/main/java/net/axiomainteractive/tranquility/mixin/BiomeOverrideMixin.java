@@ -12,14 +12,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MultiNoiseBiomeSource.class)
 public class BiomeOverrideMixin {
-    @Inject(method = "getBiome", at = @At("HEAD"), cancellable = true)
-    private void tranquility$mushroomFieldsOutsideBorder(int x, int y, int z,
+    @Inject(method = "getBiome", at = @At("RETURN"), cancellable = true)
+    private void tranquility$creatorsGardenOutsideBorder(int x, int y, int z,
             MultiNoiseUtil.MultiNoiseSampler noiseSampler, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
-
+        // Biome coordinates are block coordinates / 4.
+        // x or z > 561 (block coord > 2244)
         if (Math.abs(x) > 561 || Math.abs(z) > 561) {
-            RegistryEntry<Biome> mushroom = Tranquility.INSTANCE.getMushroomFields();
-            if (mushroom != null) {
-                cir.setReturnValue(mushroom);
+            RegistryEntry<Biome> garden = Tranquility.INSTANCE.getCreatorsGarden();
+            if (garden != null) {
+                cir.setReturnValue(garden);
             }
         }
     }

@@ -11,6 +11,7 @@ import net.minecraft.world.biome.Biome
 import net.minecraft.world.biome.BiomeKeys
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.entry.RegistryEntry
+import net.axiomainteractive.tranquility.world.biome.ModBiomes
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import org.slf4j.LoggerFactory
@@ -18,7 +19,7 @@ import org.slf4j.LoggerFactory
 object Tranquility : ModInitializer {
     val MOD_ID = "tranquility"
     val logger = LoggerFactory.getLogger(MOD_ID)
-    var mushroomFields: RegistryEntry<Biome>? = null
+    var creatorsGarden: RegistryEntry<Biome>? = null
 
 	override fun onInitialize() {
         ModItems.registerModItems()
@@ -36,13 +37,13 @@ object Tranquility : ModInitializer {
                 logger.info("Server started. Set overworld border to 5000 blocks wide centered at (0,0)")
             }
 
-            // Initialize mushroomFields reference
+            // Initialize creatorsGarden reference
             val biomeRegistry = server.registryManager.getOrThrow(RegistryKeys.BIOME)
-            val optionalMushroom = biomeRegistry.getOptional(BiomeKeys.MUSHROOM_FIELDS)
-            mushroomFields = if (optionalMushroom.isPresent) optionalMushroom.get() else null
+            val optionalGarden = biomeRegistry.getOptional(ModBiomes.CREATORS_GARDEN)
+            creatorsGarden = if (optionalGarden.isPresent) optionalGarden.get() else null
             
-            if (mushroomFields != null) {
-                logger.info("Initialized Mushroom Fields biome reference for outer world generation")
+            if (creatorsGarden != null) {
+                logger.info("Initialized Creator's Garden biome reference for outer world generation")
             }
         }
 
