@@ -25,6 +25,16 @@ object ModItems {
         val item = ChargedRedstoneDustItem(settings)
         Registry.register(Registries.ITEM, key, item)
     }
+    val STALKER_SPAWN_EGG : Item = let {
+        val id = Identifier.of(Tranquility.MOD_ID, "stalker_spawn_egg")
+        val key = RegistryKey.of(RegistryKeys.ITEM, id)
+        val settings = Item.Settings().registryKey(key)
+        // Note: Colors temporarily removed due to constructor ambiguity in this version.
+        // Trying to use simplified constructor if available or just generic Item if SpawnEggItem fails.
+        // Assuming SpawnEggItem(type, settings) exists
+        val item = net.minecraft.item.SpawnEggItem(net.axiomainteractive.tranquility.entity.ModEntities.STALKER, settings)
+        Registry.register(Registries.ITEM, key, item)
+    }
 
 
 
