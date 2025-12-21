@@ -15,10 +15,8 @@ public class BiomeOverrideMixin {
     @Inject(method = "getBiome", at = @At("HEAD"), cancellable = true)
     private void tranquility$mushroomFieldsOutsideBorder(int x, int y, int z,
             MultiNoiseUtil.MultiNoiseSampler noiseSampler, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
-        // Biome coordinates are block coordinates / 4.
-        // Border is 5000 wide, centered at 0,0. So +/- 2500 blocks.
-        // 2500 / 4 = 625.
-        if (Math.abs(x) > 625 || Math.abs(z) > 625) {
+
+        if (Math.abs(x) > 561 || Math.abs(z) > 561) {
             RegistryEntry<Biome> mushroom = Tranquility.INSTANCE.getMushroomFields();
             if (mushroom != null) {
                 cir.setReturnValue(mushroom);
