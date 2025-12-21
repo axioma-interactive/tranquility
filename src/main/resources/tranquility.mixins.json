@@ -3,7 +3,8 @@
 	"package": "net.axiomainteractive.tranquility.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"BiomeOverrideMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
