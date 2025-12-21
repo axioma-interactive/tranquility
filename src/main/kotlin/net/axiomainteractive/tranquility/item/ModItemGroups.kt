@@ -27,6 +27,7 @@ object ModItemGroups {
                 entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
                 entries.add(ModItems.ALUMINIUM_INGOT)
                 entries.add(ModBlocks.ALUMINIUM_BLOCK)
+                entries.add(ModBlocks.PHILOSOPHERS_STONE)
             }.build())
 
     fun registerItemGroups() {
