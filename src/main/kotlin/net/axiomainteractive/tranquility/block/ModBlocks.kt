@@ -63,6 +63,8 @@ object ModBlocks {
         .sounds(BlockSoundGroup.DEEPSLATE)
     )
 
+    val PHILOSOPHERS_STONE: Block = registerPhilosophersStoneBlock("philosophers_stone")
+
     private fun registerBlock(name: String, blockSettings: AbstractBlock.Settings) : Block {
         val key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Tranquility.MOD_ID, name))
         val block = Block(blockSettings.registryKey(key))
@@ -74,6 +76,18 @@ object ModBlocks {
         val key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Tranquility.MOD_ID, name))
         val item = BlockItem(block, Item.Settings().registryKey(key))
         Registry.register(Registries.ITEM, key, item)
+    }
+
+    private fun registerPhilosophersStoneBlock(name: String): Block {
+        val key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Tranquility.MOD_ID, name))
+        val settings = AbstractBlock.Settings.create()
+            .strength(4f)
+            .requiresTool()
+            .sounds(BlockSoundGroup.STONE)
+            .registryKey(key)
+        val block = net.axiomainteractive.tranquility.block.custom.PhilosophersStoneBlock(settings)
+        registerBlockItem(name, block)
+        return Registry.register(Registries.BLOCK, key, block)
     }
 
     fun registerModBlocks() {
