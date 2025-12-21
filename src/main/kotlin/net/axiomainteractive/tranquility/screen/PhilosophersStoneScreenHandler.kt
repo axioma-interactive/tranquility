@@ -26,11 +26,11 @@ class PhilosophersStoneScreenHandler(syncId: Int, playerInventory: PlayerInvento
 
     init {
         // Input Slots (0, 1)
-        this.addSlot(Slot(input, 0, 44, 35))
-        this.addSlot(Slot(input, 1, 80, 35))
+        this.addSlot(Slot(input, 0,34, 35))
+        this.addSlot(Slot(input, 1, 126, 35))
 
         // Output Slot (2)
-        this.addSlot(object : Slot(output, 0, 116, 35) {
+        this.addSlot(object : Slot(output, 0, 80, 35) {
             override fun canInsert(stack: ItemStack): Boolean {
                 return false
             }
