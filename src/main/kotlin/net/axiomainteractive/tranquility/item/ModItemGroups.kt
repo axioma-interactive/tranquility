@@ -28,6 +28,7 @@ object ModItemGroups {
                 entries.add(ModItems.RAW_ALUMINIUM)
                 entries.add(ModBlocks.RAW_ALUMINIUM_BLOCK)
                 entries.add(ModItems.ALUMINIUM_INGOT)
+                entries.add(ModItems.CHARGED_REDSTONE_DUST)
                 entries.add(ModBlocks.ALUMINIUM_BLOCK)
                 entries.add(ModBlocks.PHILOSOPHERS_STONE)
             }.build())

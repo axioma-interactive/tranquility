@@ -1,6 +1,7 @@
 package net.axiomainteractive.tranquility.mixin
 
 import net.axiomainteractive.tranquility.block.ModBlocks
+import net.axiomainteractive.tranquility.item.ModItems
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ItemEntity
@@ -35,6 +36,13 @@ abstract class ItemEntityMixin(type: EntityType<*>, world: World) : Entity(type,
                 if (lightningBolt != null) {
                     lightningBolt.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(this.blockPos))
                     this.world.spawnEntity(lightningBolt)
+                    
+                    val newStack = ItemStack(ModItems.CHARGED_REDSTONE_DUST, this.getStack().count)
+                    val newEntity = ItemEntity(this.world, this.x, this.y, this.z, newStack)
+                    newEntity.setToDefaultPickupDelay()
+                    newEntity.isInvulnerable = true
+                    this.world.spawnEntity(newEntity)
+                    
                     this.discard()
                 }
             }
