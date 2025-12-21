@@ -38,13 +38,45 @@ abstract class ItemEntityMixin(type: EntityType<*>, world: World) : Entity(type,
                     this.world.spawnEntity(lightningBolt)
                     
                     val newStack = ItemStack(ModItems.CHARGED_REDSTONE_DUST, this.getStack().count)
-                    val newEntity = ItemEntity(this.world, this.x, this.y, this.z, newStack)
+                    // Spawn 0.5 blocks higher to avoid immediate ground collision
+                    val newEntity = ItemEntity(this.world, this.x, this.y + 0.5, this.z, newStack)
                     newEntity.setToDefaultPickupDelay()
                     newEntity.isInvulnerable = true
+                    
+                    // Fling the item away to prevent it from landing on the same block immediately
+                    val random = this.world.random
+                    newEntity.velocity = Vec3d(
+                        random.nextDouble() * 0.4 - 0.2, // Random X velocity
+                        0.4,                             // Upward toss
+                        random.nextDouble() * 0.4 - 0.2  // Random Z velocity
+                    )
+                    
                     this.world.spawnEntity(newEntity)
                     
                     this.discard()
                 }
+            }
+        } else if (this.getStack().item == ModItems.CHARGED_REDSTONE_DUST && this.isOnGround) {
+            val posWithOffset = this.blockPos.down()
+            if (this.world.getBlockState(posWithOffset).block == ModBlocks.CRIMSON_OBSIDIAN) {
+                // Spawn 5 Lightning bolts
+                for (i in 1..5) {
+                    val lightningBolt = EntityType.LIGHTNING_BOLT.create(this.world, SpawnReason.TRIGGERED)
+                    if (lightningBolt != null) {
+                        lightningBolt.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(this.blockPos))
+                        this.world.spawnEntity(lightningBolt)
+                    }
+                }
+
+                // Destroy block first to prevent explosion deflection
+                this.world.removeBlock(posWithOffset, false)
+
+                // Create massive explosion
+                // Charged Creeper explosion power is 6.0f
+                this.world.createExplosion(this, posWithOffset.x + 0.5, posWithOffset.y + 0.5, posWithOffset.z + 0.5, 6.0f, World.ExplosionSourceType.TNT)
+
+                // Destroy item
+                this.discard()
             }
         }
     }
