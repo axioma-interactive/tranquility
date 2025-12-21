@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.CraftingResultInventory
 import net.minecraft.inventory.Inventory
 import net.minecraft.inventory.SimpleInventory
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.screen.ScreenHandler
@@ -57,17 +58,25 @@ class PhilosophersStoneScreenHandler(syncId: Int, playerInventory: PlayerInvento
             if (!world.isClient) {
                 val slot0 = input.getStack(0)
                 val slot1 = input.getStack(1)
-
-                val valid = (slot0.isOf(Items.REDSTONE) && slot1.isOf(Items.FLINT)) ||
-                            (slot0.isOf(Items.FLINT) && slot1.isOf(Items.REDSTONE))
-
-                if (valid) {
-                    output.setStack(0, ItemStack(Items.GUNPOWDER, 1))
-                } else {
-                    output.setStack(0, ItemStack.EMPTY)
-                }
+                
+                val outputStack = getRecipeOutput(slot0.item, slot1.item)
+                output.setStack(0, outputStack)
             }
         }
+    }
+    // TODO: should be configurable in json files like normal crafting recipes
+    private fun getRecipeOutput(item1: Item, item2: Item): ItemStack {
+        // Redstone + Flint -> Gunpowder
+        if (match(item1, item2, Items.REDSTONE, Items.FLINT)) return ItemStack(Items.GUNPOWDER)
+        
+        // Pork + Dirt -> Rotten Flesh
+        if (match(item1, item2, Items.PORKCHOP, Items.DIRT)) return ItemStack(Items.ROTTEN_FLESH)
+        
+        return ItemStack.EMPTY
+    }
+
+    private fun match(i1: Item, i2: Item, r1: Item, r2: Item): Boolean {
+        return (i1 == r1 && i2 == r2) || (i1 == r2 && i2 == r1)
     }
 
     override fun onClosed(player: PlayerEntity) {
