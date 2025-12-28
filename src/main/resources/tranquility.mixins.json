@@ -8,7 +8,8 @@
 		"AbstractBlockStateMixin",
 		"RedstoneViewMixin",
 		"RedstoneWireBlockMixin",
-		"CreeperEntityAccessor"
+		"CreeperEntityAccessor",
+		"BiomeOverrideMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
