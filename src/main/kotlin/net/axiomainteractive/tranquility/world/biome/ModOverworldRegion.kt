@@ -21,7 +21,8 @@ class ModOverworldRegion(name: Identifier?, weight: Int) : Region(name, RegionTy
         this.addModifiedVanillaOverworldBiomes(
             mapper,
             Consumer { modifiedVanillaOverworldBuilder: ModifiedVanillaOverworldBuilder? ->
-                // modifiedVanillaOverworldBuilder!!.replaceBiome(BiomeKeys.FOREST, ModBiomes.TEST_BIOME)
+                // No biome replacements needed for now
+                // modifiedVanillaOverworldBuilder!!.replaceBiome(BiomeKeys.FOREST, ModBiomes.CREATORS_GARDEN)
             })
     }
 }
