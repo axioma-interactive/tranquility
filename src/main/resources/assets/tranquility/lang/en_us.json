@@ -17,5 +17,7 @@
   "itemgroup.tranquility.tranquility_items": "Tranquility Items",
   "block.tranquility.philosophers_stone": "Philosopher's Stone",
   "item.tranquility.philosophers_stone": "Philosopher's Stone",
-  "biome.tranquility.creators_garden": "Creators' Garden"
+  "biome.tranquility.creators_garden": "Creators' Garden",
+  "entity.tranquility.stalker": "Stalker",
+  "item.tranquility.stalker_spawn_egg": "Stalker Spawn Egg"
 }

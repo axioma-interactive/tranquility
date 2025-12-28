@@ -31,6 +31,7 @@ object ModItemGroups {
                 entries.add(ModItems.CHARGED_REDSTONE_DUST)
                 entries.add(ModBlocks.ALUMINIUM_BLOCK)
                 entries.add(ModBlocks.PHILOSOPHERS_STONE)
+                entries.add(ModItems.STALKER_SPAWN_EGG)
             }.build())
 
     fun registerItemGroups() {

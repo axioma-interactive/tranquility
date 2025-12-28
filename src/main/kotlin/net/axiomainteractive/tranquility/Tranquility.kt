@@ -4,6 +4,7 @@ import net.axiomainteractive.tranquility.block.ModBlocks
 import net.axiomainteractive.tranquility.block.entity.ModBlockEntities
 import net.axiomainteractive.tranquility.item.ModItemGroups
 import net.axiomainteractive.tranquility.item.ModItems
+import net.axiomainteractive.tranquility.entity.ModEntities
 import net.axiomainteractive.tranquility.screen.ModScreenHandlers
 import net.fabricmc.api.ModInitializer
 import net.minecraft.world.World
@@ -14,6 +15,8 @@ import net.minecraft.registry.entry.RegistryEntry
 import net.axiomainteractive.tranquility.world.biome.ModBiomes
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import org.slf4j.LoggerFactory
+import net.minecraft.network.packet.s2c.play.PositionFlag
+
 
 object Tranquility : ModInitializer {
     val MOD_ID = "tranquility"
@@ -35,10 +38,14 @@ object Tranquility : ModInitializer {
         }
 
 	override fun onInitialize() {
+
+
+
         ModItems.registerModItems()
         ModBlocks.registerModBlocks()
         ModItemGroups.registerItemGroups()
         ModBlockEntities.registerBlockEntities()
+        ModEntities.registerModEntities()
         ModScreenHandlers.registerScreenHandlers()
 
         ServerLifecycleEvents.SERVER_STARTING.register { s ->
@@ -137,6 +144,8 @@ object Tranquility : ModInitializer {
             }
         }
 
+
+
         net.fabricmc.fabric.api.event.player.UseEntityCallback.EVENT.register { player, world, hand, entity, hitResult ->
             val stack = player.getStackInHand(hand)
             if (stack.item is net.axiomainteractive.tranquility.item.ChargedRedstoneDustItem && entity is net.minecraft.entity.mob.CreeperEntity) {
@@ -161,5 +170,7 @@ object Tranquility : ModInitializer {
             }
             net.minecraft.util.ActionResult.PASS
         }
+
+
 	}
 }

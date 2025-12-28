@@ -20,6 +20,14 @@ class TranquilityDataGenerator : DataGeneratorEntrypoint {
     override fun buildRegistry(registryBuilder: RegistryBuilder) {
         Tranquility.logger.info("TranquilityDataGenerator: buildRegistry called")
         registryBuilder.addRegistry(RegistryKeys.BIOME, ModBiomes::bootstrap)
+        registryBuilder.addRegistry(
+            RegistryKeys.DIMENSION_TYPE,
+            net.axiomainteractive.tranquility.world.dimension.ModDimensions::bootstrapType
+        )
+        registryBuilder.addRegistry(
+            RegistryKeys.DIMENSION,
+            net.axiomainteractive.tranquility.world.dimension.ModDimensions::bootstrapDimension
+        )
     }
 
     private class WorldGenProvider(output: FabricDataOutput, registriesFuture: CompletableFuture<RegistryWrapper.WrapperLookup>) 
