@@ -1,90 +1,64 @@
 package net.axiomainteractive.tranquility.world.biome
 
 import net.axiomainteractive.tranquility.Tranquility
-import net.minecraft.client.sound.Sound
-import net.minecraft.entity.EntityType
-import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registerable
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
-import net.minecraft.registry.entry.RegistryEntry
 import net.minecraft.sound.BiomeMoodSound
-import net.minecraft.sound.MusicType
-import net.minecraft.sound.SoundEvent
 import net.minecraft.util.Identifier
 import net.minecraft.world.biome.Biome
 import net.minecraft.world.biome.BiomeEffects
-import net.minecraft.world.biome.GenerationSettings.LookupBackedBuilder
+import net.minecraft.world.biome.GenerationSettings
 import net.minecraft.world.biome.SpawnSettings
-import net.minecraft.world.biome.SpawnSettings.SpawnEntry
-import net.minecraft.world.gen.GenerationStep
-import net.minecraft.world.gen.carver.ConfiguredCarver
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures
-import net.minecraft.world.gen.feature.PlacedFeature
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures
 
 object ModBiomes {
-    val TEST_BIOME: RegistryKey<Biome?>? = RegistryKey.of<Biome?>(
+    val CREATORS_GARDEN: RegistryKey<Biome> = RegistryKey.of(
         RegistryKeys.BIOME,
-        Identifier.of(Tranquility.MOD_ID, "test_biome")
+        Identifier.of(Tranquility.MOD_ID, "creators_garden")
     )
 
-    fun boostrap(context: Registerable<Biome>) {
-        context.register(TEST_BIOME, testBiome(context))
+    fun bootstrap(context: Registerable<Biome>) {
+        println("ModBiomes: bootstrap called")
+        context.register(CREATORS_GARDEN, creatorsGarden(context))
     }
 
-    fun globalOverworldGeneration(builder: LookupBackedBuilder) {
-        DefaultBiomeFeatures.addLandCarvers(builder)
-        DefaultBiomeFeatures.addAmethystGeodes(builder)
-        DefaultBiomeFeatures.addDungeons(builder)
-        DefaultBiomeFeatures.addMineables(builder)
-        DefaultBiomeFeatures.addSprings(builder)
-        DefaultBiomeFeatures.addFrozenTopLayer(builder)
-    }
+    private fun creatorsGarden(context: Registerable<Biome>): Biome {
+        val spawnSettings = SpawnSettings.Builder()
+        // No farm animals on surface
+        // Add hostile mobs        
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings)
 
-    fun testBiome(context: Registerable<Biome>): Biome {
-        val spawnBuilder = SpawnSettings.Builder()
-
-        spawnBuilder.spawn(SpawnGroup.CREATURE, 2,SpawnEntry(EntityType.WOLF, 5, 4))
-
-        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder)
-        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder)
-
-        val biomeBuilder =
-            LookupBackedBuilder(
-                context.getRegistryLookup<PlacedFeature?>(RegistryKeys.PLACED_FEATURE),
-                context.getRegistryLookup<ConfiguredCarver<*>?>(RegistryKeys.CONFIGURED_CARVER)
-            )
-
-        globalOverworldGeneration(biomeBuilder)
-        DefaultBiomeFeatures.addMossyRocks(biomeBuilder)
-        DefaultBiomeFeatures.addDefaultOres(biomeBuilder)
-        DefaultBiomeFeatures.addExtraGoldOre(biomeBuilder)
-
-        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS)
-        DefaultBiomeFeatures.addForestFlowers(biomeBuilder)
-        DefaultBiomeFeatures.addLargeFerns(biomeBuilder)
-
-        DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder)
-        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder, true)
+        val generationSettings = GenerationSettings.LookupBackedBuilder(
+            context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
+            context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)
+        )
+        
+        // Add basic world generation features
+        DefaultBiomeFeatures.addDefaultOres(generationSettings)
+        // Removed DefaultDisks to reduce water/clay patches
+        DefaultBiomeFeatures.addDefaultGrass(generationSettings)
+        DefaultBiomeFeatures.addDefaultMushrooms(generationSettings)
+        
+        // NO TREES - This is intentional to match user requirements
 
         return Biome.Builder()
-            .precipitation(true)
-            .downfall(0.4f)
-            .temperature(0.7f)
-            .generationSettings(biomeBuilder.build())
-            .spawnSettings(spawnBuilder.build())
+            .precipitation(false) // Desert-like: No rain
+            .temperature(2.0f)    // Desert-like: Hot
+            .downfall(0.0f)       // Desert-like: Dry
             .effects(
-                (BiomeEffects.Builder())
-                    .waterColor(0x4C4B50)
-                    .waterFogColor(0x4C4B50)
-                    .skyColor(0x4C4B50)
-                    .grassColor(0x4C4B50)
-                    .foliageColor(0x4C4B50)
-                    .fogColor(0x4C4B50)
+                BiomeEffects.Builder()
+                    .waterColor(0x666666)
+                    .waterFogColor(0x333333)
+                    .fogColor(0x444444)
+                    .skyColor(0x555555)
+                    .grassColor(0x555555)
+                    .foliageColor(0x555555)
                     .moodSound(BiomeMoodSound.CAVE)
                     .build()
             )
+            .spawnSettings(spawnSettings.build())
+            .generationSettings(generationSettings.build())
             .build()
     }
 }

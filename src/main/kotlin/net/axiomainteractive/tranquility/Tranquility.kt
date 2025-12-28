@@ -7,6 +7,13 @@ import net.axiomainteractive.tranquility.item.ModItems
 import net.axiomainteractive.tranquility.entity.ModEntities
 import net.axiomainteractive.tranquility.screen.ModScreenHandlers
 import net.fabricmc.api.ModInitializer
+import net.minecraft.world.World
+import net.minecraft.world.biome.Biome
+import net.minecraft.world.biome.BiomeKeys
+import net.minecraft.registry.RegistryKeys
+import net.minecraft.registry.entry.RegistryEntry
+import net.axiomainteractive.tranquility.world.biome.ModBiomes
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import org.slf4j.LoggerFactory
 import net.minecraft.network.packet.s2c.play.PositionFlag
 
@@ -14,6 +21,21 @@ import net.minecraft.network.packet.s2c.play.PositionFlag
 object Tranquility : ModInitializer {
     val MOD_ID = "tranquility"
     val logger = LoggerFactory.getLogger(MOD_ID)
+    private var server: net.minecraft.server.MinecraftServer? = null
+    var creatorsGarden: RegistryEntry<Biome>? = null
+        get() {
+            if (field == null && server != null) {
+                val biomeRegistry = server!!.registryManager.getOptional(RegistryKeys.BIOME)
+                if (biomeRegistry.isPresent) {
+                    val optionalGarden = biomeRegistry.get().getOptional(ModBiomes.CREATORS_GARDEN)
+                    if (optionalGarden.isPresent) {
+                        field = optionalGarden.get()
+                        logger.info("Lazily initialized Creator's Garden biome reference")
+                    }
+                }
+            }
+            return field
+        }
 
 	override fun onInitialize() {
 
@@ -25,6 +47,23 @@ object Tranquility : ModInitializer {
         ModBlockEntities.registerBlockEntities()
         ModEntities.registerModEntities()
         ModScreenHandlers.registerScreenHandlers()
+
+        ServerLifecycleEvents.SERVER_STARTING.register { s ->
+            server = s
+        }
+
+        ServerLifecycleEvents.SERVER_STARTED.register { s ->
+            val overworld = s.getWorld(World.OVERWORLD)
+            if (overworld != null) {
+                val border = overworld.worldBorder
+                border.size = 5000.0
+                border.setCenter(0.0, 0.0)
+                logger.info("Server started (fully). Set overworld border to 5000 blocks wide centered at (0,0)")
+            } else {
+                logger.error("Failed to get Overworld in SERVER_STARTED event!")
+            }
+        }
+
 		logger.info("Hello Fabric world!")
 
         net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register { server ->
