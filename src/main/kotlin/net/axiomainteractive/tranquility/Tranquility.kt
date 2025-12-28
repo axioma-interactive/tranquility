@@ -16,12 +16,7 @@ object Tranquility : ModInitializer {
     val logger = LoggerFactory.getLogger(MOD_ID)
 
 	override fun onInitialize() {
-        // Register Chunk Generator
-        net.minecraft.registry.Registry.register(
-            net.minecraft.registry.Registries.CHUNK_GENERATOR,
-            net.minecraft.util.Identifier.of(MOD_ID, "menger_sponge"),
-            net.axiomainteractive.tranquility.world.gen.chunk.MengerSpongeChunkGenerator.CODEC
-        )
+
 
 
         ModItems.registerModItems()
@@ -137,51 +132,6 @@ object Tranquility : ModInitializer {
             net.minecraft.util.ActionResult.PASS
         }
 
-        // Teleport to Sponge Dimension
-        net.fabricmc.fabric.api.event.player.UseBlockCallback.EVENT.register { player, world, hand, hitResult ->
-            val stack = player.getStackInHand(hand)
-            if (stack.isOf(net.minecraft.item.Items.ENDER_EYE)) { // Eye of Ender
-                 val pos = hitResult.blockPos
-                 val state = world.getBlockState(pos)
-                 
-                 // Use IRON_BLOCK as the portal frame/activator just like before, but teleport to Sponge dimension
-                 if (state.isOf(net.minecraft.block.Blocks.IRON_BLOCK)) {
-                     if (!world.isClient && player is net.minecraft.server.network.ServerPlayerEntity) {
-                        val server = player.server
-                        if (server != null) {
-                            val targetWorldKey = net.axiomainteractive.tranquility.world.dimension.ModDimensions.SPONGE_LEVEL_KEY
-                            val targetWorld = server.getWorld(targetWorldKey)
 
-                            if (targetWorld != null) {
-                                if (!player.isCreative) {
-                                    stack.decrement(1)
-                                }
-                                
-                                logger.info("Teleporting player to Sponge Dimension")
-                                
-                                player.teleport(
-                                    targetWorld,
-                                    player.x,
-                                    70.5,
-                                    player.z,
-                                    java.util.HashSet<PositionFlag>(),
-                                    player.yaw,
-                                    player.pitch,
-                                    false
-                                )
-                                return@register net.minecraft.util.ActionResult.SUCCESS
-                            } else {
-                                logger.error("Sponge dimension not found!")
-                            }
-                        }
-                     } else if (world.isClient) {
-                         return@register net.minecraft.util.ActionResult.SUCCESS
-                     }
-                 }
-                 
-
-            }
-            net.minecraft.util.ActionResult.PASS
-        }
 	}
 }

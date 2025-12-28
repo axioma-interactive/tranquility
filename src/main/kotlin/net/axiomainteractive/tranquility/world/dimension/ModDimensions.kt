@@ -9,15 +9,6 @@ import net.minecraft.world.dimension.DimensionOptions
 import net.minecraft.world.dimension.DimensionType
 
 object ModDimensions {
-    val SPONGE_DIMENSION_KEY: RegistryKey<DimensionOptions> = RegistryKey.of(
-        RegistryKeys.DIMENSION,
-        Identifier.of(Tranquility.MOD_ID, "sponge")
-    )
-
-    val SPONGE_LEVEL_KEY: RegistryKey<net.minecraft.world.World> = RegistryKey.of(
-        RegistryKeys.WORLD,
-        Identifier.of(Tranquility.MOD_ID, "sponge")
-    )
 
     val GLASS_SPONGE_DIMENSION_KEY: RegistryKey<DimensionOptions> = RegistryKey.of(
         RegistryKeys.DIMENSION,
