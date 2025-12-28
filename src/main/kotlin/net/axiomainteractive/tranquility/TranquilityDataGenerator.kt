@@ -17,6 +17,14 @@ object TranquilityDataGenerator : DataGeneratorEntrypoint {
         registryBuilder.addRegistry(
             RegistryKeys.BIOME,
             ModBiomes::boostrap)
+        registryBuilder.addRegistry(
+            RegistryKeys.DIMENSION_TYPE,
+            net.axiomainteractive.tranquility.world.dimension.ModDimensions::bootstrapType
+        )
+        registryBuilder.addRegistry(
+            RegistryKeys.DIMENSION,
+            net.axiomainteractive.tranquility.world.dimension.ModDimensions::bootstrapDimension
+        )
     }
 
 }

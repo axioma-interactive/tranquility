@@ -1,0 +1,10 @@
+{
+    "type": "tranquility:sponge_type",
+    "generator": {
+        "type": "tranquility:menger_sponge",
+        "biome_source": {
+            "type": "minecraft:fixed",
+            "biome": "minecraft:plains"
+        }
+    }
+}
