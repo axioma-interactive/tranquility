@@ -29,7 +29,7 @@ public class BiomeOverrideMixin {
         if (Math.abs(x) > 561 || Math.abs(z) > 561) {
             RegistryEntry<Biome> garden = Tranquility.INSTANCE.getCreatorsGarden();
             if (garden != null) {
-                // System.out.println("DEBUG: Forcing Creator's Garden at " + x + ", " + z);
+                System.out.println("DEBUG: Forcing Creator's Garden at " + x + ", " + z);
                 cir.setReturnValue(garden);
             } else {
                 System.out.println("DEBUG: Tranquility.INSTANCE.getCreatorsGarden() is NULL!");
