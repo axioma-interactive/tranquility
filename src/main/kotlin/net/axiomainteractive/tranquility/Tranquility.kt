@@ -21,16 +21,20 @@ import net.minecraft.network.packet.s2c.play.PositionFlag
 object Tranquility : ModInitializer {
     val MOD_ID = "tranquility"
     val logger = LoggerFactory.getLogger(MOD_ID)
+    @Volatile
     private var server: net.minecraft.server.MinecraftServer? = null
+    @Volatile
     var creatorsGarden: RegistryEntry<Biome>? = null
         get() {
-            if (field == null && server != null) {
-                val biomeRegistry = server!!.registryManager.getOptional(RegistryKeys.BIOME)
-                if (biomeRegistry.isPresent) {
-                    val optionalGarden = biomeRegistry.get().getOptional(ModBiomes.CREATORS_GARDEN)
-                    if (optionalGarden.isPresent) {
-                        field = optionalGarden.get()
-                        logger.info("Lazily initialized Creator's Garden biome reference")
+            if (field == null) {
+                if (server != null) {
+                    val biomeRegistry = server!!.registryManager.getOptional(RegistryKeys.BIOME)
+                    if (biomeRegistry.isPresent) {
+                        val optionalGarden = biomeRegistry.get().getOptional(ModBiomes.CREATORS_GARDEN)
+                        if (optionalGarden.isPresent) {
+                            field = optionalGarden.get()
+                            // logger.info("Lazily initialized Creator's Garden biome reference")
+                        }
                     }
                 }
             }
@@ -50,6 +54,17 @@ object Tranquility : ModInitializer {
 
         ServerLifecycleEvents.SERVER_STARTING.register { s ->
             server = s
+            // Eagerly initialize biome reference
+            val registry = s.registryManager.getOptional(RegistryKeys.BIOME)
+            if (registry.isPresent) {
+                val biome = registry.get().getOptional(ModBiomes.CREATORS_GARDEN)
+                if (biome.isPresent) {
+                    creatorsGarden = biome.get()
+                    logger.info("Eagerly initialized Creator's Garden biome reference in SERVER_STARTING")
+                } else {
+                    logger.error("Could not find Creator's Garden biome in registry during SERVER_STARTING")
+                }
+            }
         }
 
         ServerLifecycleEvents.SERVER_STARTED.register { s ->

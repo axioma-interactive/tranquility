@@ -16,23 +16,25 @@ public class BiomeOverrideMixin {
         System.out.println("DEBUG: BiomeOverrideMixin class loaded!");
     }
 
+    private static boolean hasLoggedSuccess = false;
+
     @Inject(method = "getBiome", at = @At("HEAD"), cancellable = true)
     private void tranquility$creatorsGardenOutsideBorder(int x, int y, int z,
             MultiNoiseUtil.MultiNoiseSampler noiseSampler, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
-
-        // Debug logging
-        // System.out.println("DEBUG: BiomeOverrideMixin HEAD-Override called at " + x +
-        // ", " + z);
 
         // Biome coordinates are block coordinates / 4.
         // x or z > 561 (block coord > 2244)
         if (Math.abs(x) > 561 || Math.abs(z) > 561) {
             RegistryEntry<Biome> garden = Tranquility.INSTANCE.getCreatorsGarden();
             if (garden != null) {
-                System.out.println("DEBUG: Forcing Creator's Garden at " + x + ", " + z);
+                if (!hasLoggedSuccess) {
+                    Tranquility.INSTANCE.getLogger()
+                            .info("Successfully applying Creator's Garden override at " + x + ", " + z);
+                    hasLoggedSuccess = true;
+                }
                 cir.setReturnValue(garden);
             } else {
-                System.out.println("DEBUG: Tranquility.INSTANCE.getCreatorsGarden() is NULL!");
+                // Do not log error every time to avoid spam, relying on Tranquility.kt warning
             }
         }
     }
