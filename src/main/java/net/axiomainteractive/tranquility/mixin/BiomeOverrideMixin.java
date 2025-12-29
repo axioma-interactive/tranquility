@@ -25,7 +25,7 @@ public class BiomeOverrideMixin {
         // Biome coordinates are block coordinates / 4.
         // x or z > 561 (block coord > 2244)
         if (Math.abs(x) > 561 || Math.abs(z) > 561) {
-            RegistryEntry<Biome> garden = Tranquility.INSTANCE.getCreatorsGarden();
+            RegistryEntry<Biome> garden = Tranquility.INSTANCE.getCreatorsGardenEntry();
             if (garden != null) {
                 if (!hasLoggedSuccess) {
                     Tranquility.INSTANCE.getLogger()
