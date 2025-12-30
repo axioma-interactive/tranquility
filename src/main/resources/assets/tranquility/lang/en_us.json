@@ -12,12 +12,13 @@
   "item.tranquility.crimson_obsidian": "Crimson Obsidian",
   "item.tranquility.mossy_masonic_cobblestone": "Mossy Masonic Cobblestone",
   "item.tranquility.compact_mossy_masonic_cobblestone": "Compact Mossy Masonic Cobblestone",
-  "item.tranquility.compact_mossy_masonic_cobblestone": "Compact Mossy Masonic Cobblestone",
   "item.tranquility.masonic_stone": "Masonic Stone",
   "itemgroup.tranquility.tranquility_items": "Tranquility Items",
   "block.tranquility.philosophers_stone": "Philosopher's Stone",
   "item.tranquility.philosophers_stone": "Philosopher's Stone",
   "biome.tranquility.creators_garden": "Creators' Garden",
   "entity.tranquility.stalker": "Stalker",
-  "item.tranquility.stalker_spawn_egg": "Stalker Spawn Egg"
+  "item.tranquility.stalker_spawn_egg": "Stalker Spawn Egg",
+  "entity.tranquility.remnant": "Remnant",
+  "item.tranquility.remnant_spawn_egg": "Remnant Spawn Egg"
 }

@@ -9,12 +9,12 @@ import terrablender.api.TerraBlenderApi
 
 class ModTerrablenderAPI : TerraBlenderApi {
     override fun onTerraBlenderInitialized() {
-        Regions.register(ModOverworldRegion(Identifier.of(Tranquility.MOD_ID, "overworld"), 4))
+        // Regions.register(ModOverworldRegion(Identifier.of(Tranquility.MOD_ID, "overworld"), 4))
 
-        SurfaceRuleManager.addSurfaceRules(
-            SurfaceRuleManager.RuleCategory.OVERWORLD,
-            Tranquility.MOD_ID,
-            ModMaterialRules.makeRules()
-        )
+        // SurfaceRuleManager.addSurfaceRules(
+        //     SurfaceRuleManager.RuleCategory.OVERWORLD,
+        //     Tranquility.MOD_ID,
+        //     ModMaterialRules.makeRules()
+        // )
     }
 }

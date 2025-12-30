@@ -12,10 +12,12 @@ import net.minecraft.client.color.block.BlockColorProvider
 import net.minecraft.client.render.BlockRenderLayer
 
 import net.axiomainteractive.tranquility.entity.client.StalkerRenderer
+import net.axiomainteractive.tranquility.entity.client.RemnantRenderer
 
 object TranquilityClient : ClientModInitializer {
     override fun onInitializeClient() {
         HandledScreens.register(ModScreenHandlers.PHILOSOPHERS_STONE_SCREEN_HANDLER, ::PhilosophersStoneScreen)
         net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry.register(net.axiomainteractive.tranquility.entity.ModEntities.STALKER, ::StalkerRenderer)
+        net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry.register(net.axiomainteractive.tranquility.entity.ModEntities.REMNANT, ::RemnantRenderer)
     }
 }

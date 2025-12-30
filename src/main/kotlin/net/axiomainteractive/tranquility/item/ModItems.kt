@@ -29,10 +29,15 @@ object ModItems {
         val id = Identifier.of(Tranquility.MOD_ID, "stalker_spawn_egg")
         val key = RegistryKey.of(RegistryKeys.ITEM, id)
         val settings = Item.Settings().registryKey(key)
-        // Note: Colors temporarily removed due to constructor ambiguity in this version.
-        // Trying to use simplified constructor if available or just generic Item if SpawnEggItem fails.
-        // Assuming SpawnEggItem(type, settings) exists
         val item = net.minecraft.item.SpawnEggItem(net.axiomainteractive.tranquility.entity.ModEntities.STALKER, settings)
+        Registry.register(Registries.ITEM, key, item)
+    }
+
+    val REMNANT_SPAWN_EGG : Item = let {
+        val id = Identifier.of(Tranquility.MOD_ID, "remnant_spawn_egg")
+        val key = RegistryKey.of(RegistryKeys.ITEM, id)
+        val settings = Item.Settings().registryKey(key)
+        val item = RemnantSpawnEggItem(net.axiomainteractive.tranquility.entity.ModEntities.REMNANT, settings)
         Registry.register(Registries.ITEM, key, item)
     }
 
@@ -55,6 +60,8 @@ object ModItems {
             entries.add(RAW_ALUMINIUM)
             entries.add(ALUMINIUM_INGOT)
             entries.add(CHARGED_REDSTONE_DUST)
+            entries.add(STALKER_SPAWN_EGG)
+            entries.add(REMNANT_SPAWN_EGG)
         }
     }
 }

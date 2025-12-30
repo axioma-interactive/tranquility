@@ -23,8 +23,19 @@ object ModEntities {
             .build(STALKER_KEY)
     )
 
+    val REMNANT_KEY = RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(Tranquility.MOD_ID, "remnant"))
+
+    val REMNANT: EntityType<RemnantEntity> = Registry.register(
+        Registries.ENTITY_TYPE,
+        REMNANT_KEY,
+        EntityType.Builder.create(::RemnantEntity, SpawnGroup.MONSTER)
+            .dimensions(0.6f, 1.8f) // Player size
+            .build(REMNANT_KEY)
+    )
+
     fun registerModEntities() {
         Tranquility.logger.info("Registering Entities for " + Tranquility.MOD_ID)
         FabricDefaultAttributeRegistry.register(STALKER, StalkerEntity.createStalkerAttributes())
+        FabricDefaultAttributeRegistry.register(REMNANT, RemnantEntity.createRemnantAttributes())
     }
 }
