@@ -86,52 +86,69 @@ class RemnantCampfireGoal(private val mob: RemnantEntity) : Goal() {
             // Immediate Urbanization upon base establishment
             this.mob.invasionPhase = "URBANIZING"
             
-            val state = this.mob.world.getBlockState(this.mob.homePos!!)
-            if (state.block != Blocks.CAMPFIRE && this.ticks % 100 == 0) {
-                 tryPlaceCampfire()
+            // Maintenance: Check Altar Integrity
+            if (this.ticks % 100 == 0) {
+                 val base = this.mob.homePos!!
+                 val world = this.mob.world
+                 
+                 // 1. Base (Gold)
+                 if (world.getBlockState(base).block != Blocks.GOLD_BLOCK) {
+                      world.setBlockState(base, Blocks.GOLD_BLOCK.defaultState)
+                 }
+                 
+                 // 2. Mid (Netherrack)
+                 if (world.getBlockState(base.up()).block != Blocks.NETHERRACK) {
+                      world.setBlockState(base.up(), Blocks.NETHERRACK.defaultState)
+                 }
+                 
+                 // 3. Top (Fire)
+                 val firePos = base.up(2)
+                 if (world.getBlockState(firePos).block != Blocks.FIRE && world.getBlockState(firePos).block != Blocks.SOUL_FIRE) {
+                      // Equip Flint & Steel behaviorally
+                      this.mob.equipStack(EquipmentSlot.MAINHAND, ItemStack(Items.FLINT_AND_STEEL))
+                      this.mob.swingHand(net.minecraft.util.Hand.MAIN_HAND)
+                      world.setBlockState(firePos, Blocks.FIRE.defaultState)
+                 }
             }
         } else {
-             // ... (Keep existing home finding logic)
+             // FIND HOME
             this.mob.campTicks = 0
             this.mob.invasionPhase = "SCOUTING"
             
-            val nearbyCampfire = BlockPos.findClosest(this.mob.blockPos, 20, 10) { 
-                this.mob.world.getBlockState(it).block == Blocks.CAMPFIRE 
+            val nearbyAltar = BlockPos.findClosest(this.mob.blockPos, 20, 10) { 
+                this.mob.world.getBlockState(it).block == Blocks.GOLD_BLOCK 
             }
             
-            if (nearbyCampfire.isPresent) {
-                this.mob.homePos = nearbyCampfire.get()
+            if (nearbyAltar.isPresent) {
+                this.mob.homePos = nearbyAltar.get()
             } else {
-                if (!tryPlaceCampfire()) {
-                    this.mob.homePos = this.mob.blockPos
+                if (!tryBuildAltar()) {
+                    this.mob.homePos = this.mob.blockPos // Temporary
                 }
             }
         }
     }
 
-    private fun tryPlaceCampfire(): Boolean {
+    private fun tryBuildAltar(): Boolean {
+         // Find flat spot
          val pos = this.mob.blockPos.offset(this.mob.horizontalFacing)
-         val stateBelow = this.mob.world.getBlockState(pos.down())
-         val state = this.mob.world.getBlockState(pos)
+         val world = this.mob.world
          
-         // Standard check (Solid Ground + Air)
-         if (stateBelow.isSolid && (state.isAir || state.isReplaceable)) {
-             this.mob.world.setBlockState(pos, Blocks.CAMPFIRE.defaultState)
+         // Basic check: Solid ground below, Air above
+         if (world.getBlockState(pos.down()).isSolid && world.getBlockState(pos).isReplaceable) {
+             
+             // Build Altar
+             world.setBlockState(pos, Blocks.GOLD_BLOCK.defaultState)
+             world.setBlockState(pos.up(), Blocks.NETHERRACK.defaultState)
+             world.setBlockState(pos.up(2), Blocks.FIRE.defaultState)
+             
              this.mob.homePos = pos
-             // Back up slightly so we don't stand in fire
-             this.mob.navigation.startMovingTo(this.mob.x - this.mob.rotationVector.x, this.mob.y, this.mob.z - this.mob.rotationVector.z, 1.0)
+             
+             // Back up to admire (and not burn)
+             this.mob.navigation.startMovingTo(this.mob.x - this.mob.rotationVector.x * 2, this.mob.y, this.mob.z - this.mob.rotationVector.z * 2, 1.0)
+             
              return true
          }
-         
-         // Fallback: Try AT feet if offset failed
-         val posFeet = this.mob.blockPos
-         val stateBelowFeet = this.mob.world.getBlockState(posFeet.down())
-         if (stateBelowFeet.isSolid && (this.mob.world.getBlockState(posFeet).isAir || this.mob.world.getBlockState(posFeet).isReplaceable)) {
-             this.mob.world.setBlockState(posFeet, Blocks.CAMPFIRE.defaultState)
-             this.mob.homePos = posFeet
-             return true
-         }
-         
          return false
     }
 
